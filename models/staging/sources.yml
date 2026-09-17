@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw
-    database: HEALTHCARE_DBT_DB
+    database: HEALTHCARE_AI_DB
     schema: RAW
     tables:
       - name: patient
