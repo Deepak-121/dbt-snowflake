@@ -1,7 +1,22 @@
 select
     patient_id,
+    mrn,
+    patient_name,
     first_name,
     last_name,
     date_of_birth,
-    gender
+    age,
+    gender,
+    city,
+    state,
+    phone,
+    email,
+    primary_clinician_id,
+    preferred_clinic_site_id,
+    active_flag,
+    source_system,
+    load_batch_id,
+    load_ts,
+    stg_ts,
+    current_timestamp() as core_ts
 from {{ ref('stg_patient') }}

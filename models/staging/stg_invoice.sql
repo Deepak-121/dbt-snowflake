@@ -1,0 +1,22 @@
+select
+    trim(invoice_id) as invoice_id,
+    trim(patient_id) as patient_id,
+    trim(encounter_id) as encounter_id,
+    trim(clinic_site_id) as clinic_site_id,
+    invoice_date,
+    due_date,
+    trim(invoice_status) as invoice_status,
+    trim(payer_type) as payer_type,
+    trim(insurer_name) as insurer_name,
+    gross_amount,
+    discount_amount,
+    tax_amount,
+    net_amount,
+    paid_amount,
+    balance_amount,
+    case when balance_amount > 0 and current_date() > due_date then true else false end as overdue_flag,
+    source_system,
+    load_batch_id,
+    load_ts,
+    current_timestamp() as stg_ts
+from {{ source('raw', 'RAW_INVOICE') }}

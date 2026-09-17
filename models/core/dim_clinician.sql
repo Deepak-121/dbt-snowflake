@@ -1,14 +1,12 @@
 select
-    appointment_id,
-    patient_id,
     clinician_id,
+    clinician_name,
+    specialty,
     clinic_site_id,
-    appointment_date,
-    appointment_type,
-    appointment_status,
+    active_flag,
     source_system,
     load_batch_id,
     load_ts,
     stg_ts,
     current_timestamp() as core_ts
-from {{ ref('stg_appointment') }}
+from {{ ref('stg_clinician') }}

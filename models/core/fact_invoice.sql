@@ -1,0 +1,23 @@
+select
+    invoice_id,
+    patient_id,
+    encounter_id,
+    clinic_site_id,
+    invoice_date,
+    due_date,
+    invoice_status,
+    payer_type,
+    insurer_name,
+    gross_amount,
+    discount_amount,
+    tax_amount,
+    net_amount,
+    paid_amount,
+    balance_amount,
+    overdue_flag,
+    source_system,
+    load_batch_id,
+    load_ts,
+    stg_ts,
+    current_timestamp() as core_ts
+from {{ ref('stg_invoice') }}
