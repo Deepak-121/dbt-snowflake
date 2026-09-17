@@ -18,9 +18,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   healthcare_dbt:
+    +materialized: view
     staging:
       +schema: STG
+      +materialized: view
     core:
       +schema: CORE
+      +materialized: table
     curated:
       +schema: CURATED
+      +materialized: view

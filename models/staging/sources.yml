@@ -7,3 +7,19 @@ sources:
     tables:
       - name: patient
       - name: appointment
+      - name: RAW_PATIENT
+      - name: RAW_CLINICIAN
+      - name: RAW_CLINIC_SITE
+      - name: RAW_LOCATION
+      - name: RAW_APPOINTMENT
+      - name: RAW_ENCOUNTER
+      - name: RAW_DIAGNOSIS
+      - name: RAW_LAB_RESULT
+      - name: RAW_MEDICATION
+      - name: RAW_ALLERGY
+      - name: RAW_CLINICAL_NOTE
+      - name: RAW_INVOICE
+      - name: RAW_INVOICE_LINE
+      - name: RAW_BILLING_ITEM
+      - name: RAW_PAYMENT
+      - name: RAW_DOCUMENT_METADATA
