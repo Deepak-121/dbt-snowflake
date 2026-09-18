@@ -5,9 +5,12 @@ sources:
     database: HEALTHCARE_AI_DB
     schema: RAW
     tables:
-      - name: patient
-      - name: appointment
       - name: RAW_PATIENT
+        config:
+          loaded_at_field: load_ts
+          freshness:
+            warn_after: {count: 1, period: hour}
+            error_after: {count: 24, period: hour}
       - name: RAW_CLINICIAN
       - name: RAW_CLINIC_SITE
       - name: RAW_LOCATION
@@ -23,3 +26,4 @@ sources:
       - name: RAW_BILLING_ITEM
       - name: RAW_PAYMENT
       - name: RAW_DOCUMENT_METADATA
+      - name: CLINIC_SITES

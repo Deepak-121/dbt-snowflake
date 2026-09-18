@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized = 'incremental',
+        incremental_strategy='merge',
+        on_schema_change = 'fail',
+        tags = ["test"]
+    )
+}}
+
 select
     appointment_id,
     patient_id,
@@ -12,3 +21,7 @@ select
     stg_ts,
     current_timestamp() as core_ts
 from {{ ref('stg_appointment') }}
+where 1=1
+{% if is_incremental() %}
+and load_ts > (select max(load_ts) from {{ this }})
+{% endif %}

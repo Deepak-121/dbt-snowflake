@@ -1,3 +1,9 @@
+{{
+    config(
+        tags = ["test"]
+    )
+}}
+
 select
     trim(patient_id) as patient_id,
     trim(mrn) as mrn,
@@ -19,3 +25,8 @@ select
     load_ts,
     current_timestamp() as stg_ts
 from {{ source('raw', 'RAW_PATIENT') }}
+qualify row_number() over (
+        partition by patient_id
+        order by load_ts desc, load_batch_id desc
+    ) = 1
+

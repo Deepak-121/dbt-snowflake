@@ -1,0 +1,11 @@
+clinic_site_id,clinic_site_name,city,state,facility_type,active_flag
+CS001,Central Healthcare Clinic,New Delhi,Delhi,Clinic,true
+CS002,North Healthcare Center,Noida,Uttar Pradesh,Clinic,true
+CS003,East Medical Center,Gurugram,Haryana,Medical Center,true
+CS004,West Healthcare Hospital,Jaipur,Rajasthan,Hospital,true
+CS005,South Healthcare Clinic,Lucknow,Uttar Pradesh,Clinic,true
+CS006,Metro Specialty Center,Mumbai,Maharashtra,Specialty Center,true
+CS007,City Care Hospital,Pune,Maharashtra,Hospital,true
+CS008,Green Valley Clinic,Bengaluru,Karnataka,Clinic,true
+CS009,Lakeview Medical Center,Hyderabad,Telangana,Medical Center,true
+CS010,Sunrise Healthcare Center,Chennai,Tamil Nadu,Medical Center,true

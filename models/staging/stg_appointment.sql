@@ -1,3 +1,9 @@
+{{
+    config(
+        tags = ["test"]
+    )
+}}
+
 select
     trim(appointment_id) as appointment_id,
     trim(patient_id) as patient_id,
