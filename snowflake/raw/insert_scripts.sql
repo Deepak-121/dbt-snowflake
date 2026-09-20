@@ -11,11 +11,28 @@ USE SCHEMA RAW;
 
 SET LOAD_BATCH_ID = 'BATCH_20260808_001';
 
+
+SET LOAD_BATCH_ID = 'BATCH_20260808_001';
+
+-- ---------------------------------------------------------------------
+-- PATIENT
+-- ---------------------------------------------------------------------
+INSERT INTO RAW_PATIENT VALUES
+('P1001', 'MRN1001', 'Amit', 'Verma', '1972-04-12', 'Male', 'Noida', 'Uttar Pradesh', '9999000001', 'amit.verma@example.com', 'CL003', 'SITE002', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1002', 'MRN1002', 'Sunita', 'Rao', '1965-09-20', 'Female', 'Delhi', 'Delhi', '9999000002', 'sunita.rao@example.com', 'CL002', 'SITE003', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1003', 'MRN1003', 'Rohit', 'Malhotra', '1984-01-15', 'Male', 'Gurugram', 'Haryana', '9999000003', 'rohit.malhotra@example.com', 'CL001', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1004', 'MRN1004', 'Meera', 'Iyer', '1990-07-30', 'Female', 'Noida', 'Uttar Pradesh', '9999000004', 'meera.iyer@example.com', 'CL005', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1005', 'MRN1005', 'Karan', 'Singh', '1958-11-05', 'Male', 'Delhi', 'Delhi', '9999000005', 'karan.singh@example.com', 'CL002', 'SITE003', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1006', 'MRN1006', 'Nisha', 'Kapoor', '1978-03-22', 'Female', 'Noida', 'Uttar Pradesh', '9999000006', 'nisha.kapoor@example.com', 'CL004', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1007', 'MRN1007', 'Arjun', 'Bose', '2001-12-02', 'Male', 'Delhi', 'Delhi', '9999000007', 'arjun.bose@example.com', 'CL005', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
+('P1008', 'MRN1008', 'Lakshmi', 'Menon', '1949-06-18', 'Female', 'Gurugram', 'Haryana', '9999000008', 'lakshmi.menon@example.com', 'CL001', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP);
+
+INSERT INTO RAW_PATIENT VALUES
+('P1006', 'MRN1006', 'Nisha', 'Kapoor', '1978-03-22', 'Female', 'Noida', 'Uttar Pradesh', '13164164968', 'nisha.kapoor@example.com', 'CL004', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP);
+
 -- =====================================================================
 -- 2. LOAD SYNTHETIC APPOINTMENT DATA
 -- =====================================================================
-
-SET LOAD_BATCH_ID = 'BATCH_20260808_001';
 
 
 INSERT INTO RAW_APPOINTMENT (
@@ -70,21 +87,6 @@ INSERT INTO RAW_CLINICIAN VALUES
 ('CL004', 'Dr. Sameer Khan', 'Pulmonology', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
 ('CL005', 'Dr. Neha Gupta', 'General Practice', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP);
 
--- ---------------------------------------------------------------------
--- PATIENT
--- ---------------------------------------------------------------------
-INSERT INTO RAW_PATIENT VALUES
-('P1001', 'MRN1001', 'Amit', 'Verma', '1972-04-12', 'Male', 'Noida', 'Uttar Pradesh', '9999000001', 'amit.verma@example.com', 'CL003', 'SITE002', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1002', 'MRN1002', 'Sunita', 'Rao', '1965-09-20', 'Female', 'Delhi', 'Delhi', '9999000002', 'sunita.rao@example.com', 'CL002', 'SITE003', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1003', 'MRN1003', 'Rohit', 'Malhotra', '1984-01-15', 'Male', 'Gurugram', 'Haryana', '9999000003', 'rohit.malhotra@example.com', 'CL001', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1004', 'MRN1004', 'Meera', 'Iyer', '1990-07-30', 'Female', 'Noida', 'Uttar Pradesh', '9999000004', 'meera.iyer@example.com', 'CL005', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1005', 'MRN1005', 'Karan', 'Singh', '1958-11-05', 'Male', 'Delhi', 'Delhi', '9999000005', 'karan.singh@example.com', 'CL002', 'SITE003', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1006', 'MRN1006', 'Nisha', 'Kapoor', '1978-03-22', 'Female', 'Noida', 'Uttar Pradesh', '9999000006', 'nisha.kapoor@example.com', 'CL004', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1007', 'MRN1007', 'Arjun', 'Bose', '2001-12-02', 'Male', 'Delhi', 'Delhi', '9999000007', 'arjun.bose@example.com', 'CL005', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP),
-('P1008', 'MRN1008', 'Lakshmi', 'Menon', '1949-06-18', 'Female', 'Gurugram', 'Haryana', '9999000008', 'lakshmi.menon@example.com', 'CL001', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP);
-
-INSERT INTO RAW_PATIENT VALUES
-('P1006', 'MRN1006', 'Nisha', 'Kapoor', '1978-03-22', 'Female', 'Noida', 'Uttar Pradesh', '13164164968', 'nisha.kapoor@example.com', 'CL004', 'SITE001', TRUE, 'ENTERPRISE_SYNTH', $LOAD_BATCH_ID, CURRENT_TIMESTAMP);
 
 
 
