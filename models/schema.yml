@@ -13,7 +13,6 @@ models:
           
   - name: fact_appointment
     description: "Core appointment fact"
-
     columns:
       - name: appointment_id
         description: "Unique appointment identifier"
@@ -29,3 +28,9 @@ models:
               arguments:
                 to: ref('dim_patient')
                 field: patient_id
+      - name: appointment_status
+        description: "Status of the appointment"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Scheduled', 'Completed', 'Cancelled', 'No Show','Missed']
