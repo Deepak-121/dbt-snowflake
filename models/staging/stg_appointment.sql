@@ -16,4 +16,4 @@ select
     load_batch_id,
     load_ts,
     current_timestamp() as stg_ts
-from {{ source('raw', 'RAW_APPOINTMENT') }}
+from {{ source('raw', 'RAW_APPOINTMENT') }} 
