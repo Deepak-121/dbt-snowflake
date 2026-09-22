@@ -17,13 +17,26 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   healthcare_dbt:
+    +database: |
+      {%- if target.name in ["default", "ci"] -%}
+        HEALTHCARE_AI_DB
+      {%- elif target.name == "dev" -%}
+        HEALTHCARE_AI_DB
+      {%- elif target.name == "prod" -%}
+        HEALTHCARE_AI_PROD
+      {%- else -%}
+        invalid_database
+      {%- endif -%}
     +materialized: view
+
     staging:
       +schema: STG
       +materialized: view
+
     core:
       +schema: CORE
       +materialized: table
+
     curated:
       +schema: CURATED
       +materialized: view

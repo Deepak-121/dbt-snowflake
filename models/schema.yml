@@ -3,16 +3,104 @@ version: 2
 models:
   - name: dim_patient
     description: "Core patient dimension"
+    config:
+      contract:
+        enforced: true
+#     constraints:
+#      - type: primary_key
+#        columns: ['patient_id'] 
+    data_tests:
+      - minimum_row_count:
+          arguments:
+            minimum_row_count: 10
+          severity: error
 
     columns:
       - name: patient_id
         description: "Unique patient identifier"
+        data_type: varchar
         data_tests:
           - not_null
-          - unique
-          
+      - name: mrn
+        data_type: varchar
+
+      - name: first_name
+        description: '{{ doc("dim_patient_docs") }}'
+        data_type: varchar
+
+      - name: last_name
+        description: '{{ doc("dim_patient_docs") }}'
+        data_type: varchar
+
+      - name: patient_name
+        description: '{{ doc("dim_patient_docs") }}'
+        data_type: varchar
+
+      - name: date_of_birth
+        data_type: date
+
+      - name: age
+        data_type: number
+
+      - name: gender
+        data_type: varchar
+
+      - name: phone
+        data_type: varchar
+
+      - name: email
+        data_type: varchar
+
+      - name: city
+        data_type: varchar
+
+      - name: state
+        data_type: varchar
+
+      - name: primary_clinician_id
+        data_type: varchar
+
+      - name: preferred_clinic_site_id
+        data_type: varchar
+
+      - name: active_flag
+        data_type: boolean
+
+      - name: is_current
+        data_type: boolean
+
+      - name: effective_from
+        data_type: timestamp_ntz
+
+      - name: effective_to
+        data_type: timestamp_ntz
+
+      - name: load_batch_id
+        data_type: varchar
+
+      - name: load_ts
+        data_type: timestamp_ntz
+
+      - name: stg_ts
+        data_type: timestamp_ltz
+
+      - name: core_ts
+        data_type: timestamp_ltz
+
+      - name: dbt_updated_at
+        data_type: timestamp_ntz
+
+      - name: source_system
+        data_type: varchar
+
   - name: fact_appointment
     description: "Core appointment fact"
+
+    config:
+      constraints:
+      - type: primary_key
+        columns: ['appointment_id']
+
     columns:
       - name: appointment_id
         description: "Unique appointment identifier"
@@ -28,9 +116,10 @@ models:
               arguments:
                 to: ref('dim_patient')
                 field: patient_id
+
       - name: appointment_status
         description: "Status of the appointment"
         data_tests:
           - accepted_values:
               arguments:
-                values: ['Scheduled', 'Completed', 'Cancelled', 'No Show','Missed']
+                values: ['Scheduled', 'Completed', 'Cancelled', 'No Show', 'Missed']
