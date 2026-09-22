@@ -14,9 +14,15 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
+on-run-start:
+  - "{{ log('Starting dbt run', info=True) }}"
+  - "create table if not exists {{ target.database }}.{{ target.schema }}.dbt_audit (model_name string, run_ended_at timestamp)" 
 
 models:
   healthcare_dbt:
+    +post-hook: |
+      insert into {{ target.database }}.{{ target.schema }}.dbt_audit (model_name, run_ended_at)
+      values ('{{ this.name }}', current_timestamp())"
     +database: |
       {%- if target.name in ["default", "ci"] -%}
         HEALTHCARE_AI_DB
