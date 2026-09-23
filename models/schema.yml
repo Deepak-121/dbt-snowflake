@@ -13,7 +13,8 @@ models:
       - minimum_row_count:
           arguments:
             minimum_row_count: 10
-          severity: error
+          config:
+            severity: error
 
     columns:
       - name: patient_id

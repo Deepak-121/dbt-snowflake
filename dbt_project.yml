@@ -14,15 +14,21 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
+
+vars:
+  utils_schema: UTILS
+  user_name: "dbt_project_user"
+
 on-run-start:
   - "{{ log('Starting dbt run', info=True) }}"
-  - "create table if not exists {{ target.database }}.{{ target.schema }}.dbt_audit (model_name string, run_ended_at timestamp)" 
+  - "USE SCHEMA {{ target.database }}.{{ var('utils_schema') }}"
+  - "create table if not exists {{ target.database }}.{{ var('utils_schema') }}.dbt_audit (model_name string, run_ended_at timestamp)"
 
 models:
   healthcare_dbt:
     +post-hook: |
-      insert into {{ target.database }}.{{ target.schema }}.dbt_audit (model_name, run_ended_at)
-      values ('{{ this.name }}', current_timestamp())"
+      insert into {{ target.database }}.{{ var('utils_schema') }}.dbt_audit (model_name, run_ended_at)
+      values ('{{ this }}', current_timestamp())
     +database: |
       {%- if target.name in ["default", "ci"] -%}
         HEALTHCARE_AI_DB
@@ -38,19 +44,23 @@ models:
     staging:
       +schema: STG
       +materialized: view
+      +tags: ["stg"]
 
     core:
       +schema: CORE
       +materialized: table
+      +tags: ["core"]
 
     curated:
       +schema: CURATED
       +materialized: view
+      +tags: ["mart"]
 
 seeds:
   healthcare_dbt:
     clinic_sites:
       +schema: RAW
       +quote_columns: false
+
 flags:
   require_generic_test_arguments_property: true
