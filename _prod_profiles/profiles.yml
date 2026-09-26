@@ -1,0 +1,24 @@
+healthcare_dbt:
+  target: prod
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: HEALTHCARE_AI_DB
+      schema: DBT
+      threads: 4
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_PROD_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_PROD_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: HEALTHCARE_AI_PROD
+      schema: CORE
+      threads: 4

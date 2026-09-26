@@ -18,6 +18,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   utils_schema: UTILS
   user_name: "dbt_project_user"
+  start_date: ""
+  end_date: ""
 
 on-run-start:
   - "{{ log('Starting dbt run', info=True) }}"
